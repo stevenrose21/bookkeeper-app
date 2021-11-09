@@ -10,18 +10,19 @@ interface invoiceType {
 export default function Invoice() {
 	let navigate = useNavigate();
 	let params = useParams();
-	let invoice: invoiceType | null = getInvoice(parseInt(params.invoiceId, 10));
+	let invoice: invoiceType = getInvoice(parseInt(params.invoiceId!, 10))!;
+	let { name, amount, number, due } = invoice;
 
 	return (
 		<main style={{ padding: '1rem' }}>
-			<h2>Total Due: {invoice.amount}</h2>
+			<h2>Total Due: {amount}</h2>
 			<p>
-				{invoice.name}: {invoice.number}
+				{name}: {number}
 			</p>
-			<p>Due Date: {invoice.due}</p>
+			<p>Due Date: {due}</p>
 			<button
 				onClick={() => {
-					deleteInvoice(invoice.number);
+					deleteInvoice(number);
 					navigate('/invoices');
 				}}>
 				Delete
