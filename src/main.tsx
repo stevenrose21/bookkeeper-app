@@ -10,6 +10,23 @@ ReactDOM.render(
 	<BrowserRouter>
 		<Routes>
 			<Route path='/' element={<App />}>
+				<Route
+					index
+					element={
+						<main style={{ padding: '1rem' }}>
+							<p>
+								Select an{' '}
+								<strong>
+									<a href='/invoices'>invoices</a>
+								</strong>{' '}
+								or{' '}
+								<strong>
+									<a href='/expenses'>expenses</a>
+								</strong>
+							</p>
+						</main>
+					}
+				/>
 				<Route path='expenses' element={<Expenses />} />
 				<Route path='invoices' element={<Invoices />}>
 					<Route
